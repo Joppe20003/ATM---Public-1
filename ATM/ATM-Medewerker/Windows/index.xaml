@@ -1,0 +1,124 @@
+﻿<Window x:Class="ATM_Medewerker.Windows.index"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATM_Medewerker.Windows"
+        mc:Ignorable="d"
+        Title="index" Height="450" Width="800">
+    <Grid>
+        <Grid Name="searchAccount" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Zoeken"/>
+                <TextBox Grid.Column="1" KeyUp="searchKeyUp" Height="20" Name="searchBox"/>
+            </Grid>
+            <Button Grid.Row="1" Content="Rekening aanmaken" Margin="5" Click="closeMainGrid"/>
+            <DataGrid Grid.Row="2" x:Name="dataGrid" IsReadOnly="True" CanUserResizeColumns="False" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Rekening nummer" Binding="{Binding rekening_nummer}" Width="1*"/>
+                    <DataGridTextColumn Header="Saldo" Binding="{Binding saldo}" Width="1*"/>
+                    <DataGridTextColumn Header="Datum laatst gewijzigd" Binding="{Binding date_edit}" Width="1*"/>
+                    <DataGridTextColumn Header="Datum aangemaakt" Binding="{Binding date_created}" Width="1*"/>
+                    <DataGridTemplateColumn Header="Acties" Width="1*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Button Content="Deblokkeren" Click="deBlockAccountClick">
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding blocked}" Value="1">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Content="Blokkeren" Click="blockAcountClick">
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding blocked}" Value="0">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Content="Saldo bewerken" Click="showChangeSaldoGrid" >
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding blocked}" Value="0">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Name="makeAccountGrid" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Content="Terug" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Click="backClick"/>
+            <Label Grid.Row="0" Content="Rekening aanmaken" FontSize="20" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" HorizontalAlignment="Center" Content="Rekenning nummer:"/>
+                <TextBox Grid.Row="1" Width="250" HorizontalAlignment="Center" Name="accountNumberBox"/>
+                <Label Grid.Row="2" HorizontalAlignment="Center" Content="Pincode:"/>
+                <TextBox Grid.Row="3" Width="250" HorizontalAlignment="Center" Name="pincodeBox"/>
+                <Button Grid.Row="4" Width="250" Margin="5" Content="Aanmaken" Click="makeAccountButton"/>
+            </Grid>
+        </Grid>
+        <Grid Name="changeAccountGrid" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Content="Terug" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5" Click="backClick2"/>
+            <Label Grid.Row="0" Content="Rekening bewerken" FontSize="20" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" HorizontalAlignment="Center" Content="Bedrag naar aan te passen"/>
+                <TextBox Grid.Row="1" Width="250" HorizontalAlignment="Center" Name="newSaldoBox"/>
+                <ComboBox Grid.Row="2" Width="250" HorizontalAlignment="Center" Name="operationComboBox" Margin="5">
+                    <ComboBoxItem Content="Opnemen" Name="OpnemenItem"/>
+                    <ComboBoxItem Content="Storten" Name="StortenItem"/>
+                </ComboBox>
+                <Button Grid.Row="3" Width="250" Margin="5" Content="Bewerken" Click="changeSaldo"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

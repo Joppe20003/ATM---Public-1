@@ -1,0 +1,792 @@
+﻿<Window x:Class="ATM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="850" Width="1200" WindowState="Maximized">
+    <Grid Background="DimGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" Foreground="White">Geld automaat</Label>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid Width="auto" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Height="40" Margin="5" FontSize="25" Width="170" Name="pinConsoleScreen" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Grid.Column="0" Height="50" Width="50" Content="1" FontSize="25" Margin="5" Click="PinConsoleButttonOne" />
+                    <Button Grid.Row="0" Grid.Column="1" Height="50" Width="50" Content="2" FontSize="25" Margin="5" Click="PinConsoleButttonTwo"/>
+                    <Button Grid.Row="0" Grid.Column="2" Height="50" Width="50" Content="3" FontSize="25" Margin="5" Click="PinConsoleButtonThree"/>
+                    <Button Grid.Row="1" Grid.Column="0" Height="50" Width="50" Content="4" FontSize="25" Margin="5" Click="PinConsoleButttonFour"/>
+                    <Button Grid.Row="1" Grid.Column="1" Height="50" Width="50" Content="5" FontSize="25" Margin="5" Click="PinConsoleButttonFive"/>
+                    <Button Grid.Row="1" Grid.Column="2" Height="50" Width="50" Content="6" FontSize="25" Margin="5" Click="PinConsoleButttonSix"/>
+                    <Button Grid.Row="2" Grid.Column="0" Height="50" Width="50" Content="7" FontSize="25" Margin="5" Click="PinConsoleButttonSeven"/>
+                    <Button Grid.Row="2" Grid.Column="1" Height="50" Width="50" Content="8" FontSize="25" Margin="5" Click="PinConsoleButttonEight"/>
+                    <Button Grid.Row="2" Grid.Column="2" Height="50" Width="50" Content="9" FontSize="25" Margin="5" Click="PinConsoleButttonNine"/>
+                    <Button Grid.Row="3" Grid.Column="0" Height="50" Width="50" Content="D" FontSize="25" Margin="5" Background="#FFCA0000" Click="PinConsoleDelete"/>
+                    <Button Grid.Row="3" Grid.Column="1" Height="50" Width="50" Content="0" FontSize="25" Margin="5" Click="PinConsoleButtonZero"/>
+                    <Button Name="PinConsoleConfirm" Grid.Row="3" Grid.Column="2" Height="50" Width="50" Content="OK" FontSize="25" Margin="5" Background="Green" IsEnabled="False" Click="PinConsoleButtonConfirm"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid Width="300" HorizontalAlignment="Right" Margin="10,40" Name="sideGridTwo" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonSix" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonSeven" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonEight" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonNine" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonTen" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Background="#EEB400" Margin="100,20" Panel.ZIndex="-100">
+                <Grid Margin="250, 40">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="222*"/>
+                        <RowDefinition Height="139*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Name="startGrid" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White" FontSize="50">Voer uw rekeningnummer in...</Label>
+                        <TextBox Grid.Row="1" Text="    a" HorizontalAlignment="Center" VerticalAlignment="Top" Width="650" FontSize="25" Name="account_number_value"/>
+                    </Grid>
+                    <Grid Name="secondGrid" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,142,0,0">
+                        <Label Grid.Row="0" Name="secondGridLabel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="White" FontSize="50">Voer uw pincode in...</Label>
+                    </Grid>
+                    <Label Grid.Row="2" Name="secondMainLabel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="40" Foreground="red" FontWeight="Bold"></Label>
+                </Grid>
+            </Grid>
+            <Grid Width="300" HorizontalAlignment="Left" Margin="10,40" Name="sideGridOne" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">Door</Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButtonOne" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButtonTwo" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButtonThree" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButtonFour" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButtonFive" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Width="300" HorizontalAlignment="Left" Margin="10,40" Name="sideGridThree" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">Saldo bekijken</Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton11" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton11Action">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">Opnemen</Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton12" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton12Action" >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">Storten</Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton13" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton13Action" >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton14" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton15" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Width="300" HorizontalAlignment="Right" Margin="10,40" Name="sideGridFour" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonSix1" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonSeven1" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonEight1" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonNine1" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButtonTen1" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Width="300" HorizontalAlignment="Left" Margin="10,40" Name="sideGridFive" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">Terug</Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton21" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton21Action" >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">10</Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton22" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton22Action">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">20</Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton23" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton23Action" >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">50</Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton24" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton24Action">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Label Background="White" Width="250" Height="50" Margin="50,0,0,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">100</Label>
+                    <Grid HorizontalAlignment="Left">
+                        <Button x:Name="circleButton25" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton25Action">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Width="300" HorizontalAlignment="Right" Margin="10,40" Name="sideGridSix" Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center"></Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButton26" Width="75" Height="75" HorizontalAlignment="Right">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">200</Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButton27" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton27Action">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">300</Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButton28" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton28Action">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">400</Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButton29" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton29Action">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Label Background="White" Width="250" Height="50" Margin="0,0,50,0" Padding="35,0,0,0" FontSize="30" HorizontalAlignment="Center">500</Label>
+                    <Grid HorizontalAlignment="Right">
+                        <Button x:Name="circleButton30" Width="75" Height="75" HorizontalAlignment="Right" Click="circleButton30Action">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="circle" Width="75" Height="75" Fill="DimGray" StrokeThickness="5" Stroke="White"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger to change the fill color to black on button hover -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="circle" Property="Fill" Value="Black"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <!-- Optional content for the button, e.g., text -->
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
